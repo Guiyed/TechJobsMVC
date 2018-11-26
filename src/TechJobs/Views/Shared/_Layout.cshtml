@@ -24,8 +24,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @foreach (KeyValuePair<string, string> navLink in ViewBag.actions)
+                    {
+                        <li><a asp-controller=@navLink.Value asp-action="Index">@navLink.Value</a></li>
+                    }
+                    
+                    <!-- Using TechJobsController Parameters
                     <li><a asp-controller="Search" asp-action="Index">Search</a></li>
                     <li><a asp-controller="List" asp-action="Index">List</a></li>
+                    -->
+
                 </ul>
             </div>
         </div>

@@ -4,11 +4,12 @@ using TechJobs.Models;
 
 namespace TechJobs.Controllers
 {
-    public class SearchController : Controller
+    public class SearchController : TechJobsController
+    //public class SearchController : Controller
     {
         public IActionResult Index()
         {
-            ViewBag.columns = ListController.columnChoices;
+            //ViewBag.columns = ListController.columnChoices;
             ViewBag.title = "Search";
             return View();
         }
@@ -18,8 +19,8 @@ namespace TechJobs.Controllers
 
         public IActionResult Results(string searchType, string searchTerm)
         {
+            //ViewBag.columns = ListController.columnChoices;
             List<Dictionary<string, string>> JobsList = new List<Dictionary<string, string>>();
-            ViewBag.columns = ListController.columnChoices;            
             
             if (searchType == "all")
             {
