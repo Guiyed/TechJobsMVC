@@ -1,0 +1,24 @@
+﻿@using System.Globalization;
+@foreach (Dictionary<string, string> job in ViewBag.jobs)
+{
+    int i = 0;
+    <table class="job-listing">
+        <tbody>
+            @foreach (KeyValuePair<string, string> attribute in job)
+            {
+                <tr class="@( i % 2 == 0 ? "even" : "odd")">
+                    <td>@CultureInfo.CurrentCulture.TextInfo.ToTitleCase(attribute.Key)</td>
+                    @if (i == 0)
+                    {
+                        <td>@attribute.Value</td>
+                    }
+                    else
+                    {
+                        <td><a asp-controller="List" asp-action="Jobs" asp-route-column="@attribute.Key" asp-route-value="@attribute.Value">@attribute.Value</a></td>
+                    }
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+}
